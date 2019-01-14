@@ -1,0 +1,67 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Create Offer</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput placeholder="Enter Offer Name" required [(ngModel)]="offer.Name" name="something">
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Enter Description" required [(ngModel)]="offer.Description" name="something">
+                </textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Enter Short Description" required [(ngModel)]="offer.ShortDescription"
+                    name="something">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Select Brand" [(ngModel)]="offer.Brand">
+                    <mat-option *ngFor="let brand of brands" [value]="brand.ID" ngDefaultControl name="Brands">
+                        {{brand.Name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Select Category" [(ngModel)]="offer.Category">
+                    <mat-option *ngFor="let Category of categories" [value]="Category.ID" ngDefaultControl name="Category">
+                        {{Category.Name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Select Image" [(ngModel)]="offer.Logo">
+                    <mat-option *ngFor="let image of images" [value]="image.ID" ngDefaultControl name="Images">
+                        <img src="image.Url" alt="">
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Select Store">
+                    <mat-option *ngFor="let store of stores" [value]="store.ID" [(ngModel)]="offer.Store" name="something"
+                        ngDefaultControl>
+                        {{Category.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Enter Link" required [(ngModel)]="offer.Url" name="Link">
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="Cashback" [(ngModel)]="offer.Cashback" name="something">
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="text" placeholder="Coupon Code" [(ngModel)]="offer.CouponCode" name="something">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="offer.EndOn"  >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker ></mat-datepicker>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="createoffer(offer)">Create</button>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,36 @@
+<div class="mb-20" fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+  <div fxFlex>
+    <mat-card fxFlexFill fxLayoutAlign="">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Input" [(ngModel)]="category.Name">
+        </mat-form-field>
+        <mat-form-field>
+         <mat-checkbox [(ngModel)]="category.isFav">text</mat-checkbox>
+        </mat-form-field>
+        <button mat-raised-button>Create Brand</button>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<div class="mb-20" fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+  <div fxFlex>
+<mat-card fxFlexFill fxLayoutAlign="" flex-direction="column">
+  <div class="example-container">
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of category">
+        <!-- <h3 matLine [disabled]="isDisabled">Title</h3> -->
+        <div>
+          <input #input type="text" name="title" id="" value="{{item.Name}}" [(ngModel)]="item.Name" [disabled]="isDisabled">
+        </div>
+        <div>
+          <button mat-raised-button (click)="editCategory(item)" *ngIf="edit">Edit</button>
+          <button mat-raised-button (click)="updateCategory(item)" *ngIf="!edit">Save</button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-card>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="mb-20" fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+    <div fxFlex>
+        <mat-card fxFlexFill fxLayoutAlign="">
+            <div class="example-container">
+                <mat-form-field>
+                    <input matInput placeholder="Input" [(ngModel)]="store.Name">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Select" [(ngModel)]="store.Logo">
+                        <mat-option value="option">Option</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-checkbox [(ngModel)]="store.isFav">text</mat-checkbox>
+                </mat-form-field>
+                <button mat-raised-button>Create Stores</button>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<div class="mb-20" fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+    <div fxFlex>
+    <mat-card fxFlexFill fxLayoutAlign="" flex-direction="column">
+        <div class="example-container">
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let item of store">
+                    <!-- <h3 matLine [disabled]="isDisabled">Title</h3> -->
+                    <div>
+                        <input #input type="text" name="title" id="" value="{{item.Name}}" [(ngModel)]="item.Name"
+                            [disabled]="isDisabled">
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-select placeholder="Select Logo" [(ngModel)]="item.Logo" [disabled]="isDisabled">
+                                <mat-option *ngFor="let logo of logos" [value]="logo.ID" ngDefaultControl name="Brands">
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <img src="{{item.Logo}}" alt="" style="width:100px;">
+                        <button mat-raised-button (click)="editStore(item)" *ngIf="edit">Edit</button>
+                        <button mat-raised-button (click)="updateStore(item)" *ngIf="!edit">Save</button>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-card>
+    </div>
+</div>
